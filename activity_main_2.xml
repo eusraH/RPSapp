@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    tools:context=".MainActivity_2">
+
+
+    <EditText
+        android:id="@+id/tv_youChose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimaryDark"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="You chose"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="4dp" />
+
+    <ImageView
+        android:id="@+id/iv_YouChose"
+        android:layout_width="139dp"
+        android:layout_height="112dp"
+        android:layout_below="@+id/tv_youChose"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/rock"
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="60dp" />
+
+    <EditText
+        android:id="@+id/tv_computerChose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="165dp"
+        android:background="@color/colorPrimaryDark"
+        android:ems="10"
+        android:text="Computer chose"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="180dp" />
+
+    <ImageView
+        android:id="@+id/iv_ComputerChose"
+        android:layout_width="186dp"
+        android:layout_height="122dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="178dp"
+        app:srcCompat="@drawable/scissors"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="234dp" />
+
+    <EditText
+        android:id="@+id/tv_score"
+        android:layout_width="239dp"
+        android:layout_height="46dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="58dp"
+        android:background="@color/colorPrimaryDark"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Score: Human 0 Computer 0"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="364dp" />
+
+    <Button
+        android:id="@+id/b_rock"
+        android:layout_width="105dp"
+        android:layout_height="47dp"
+        android:layout_alignTop="@+id/b_paper"
+        android:layout_toStartOf="@+id/iv_YouChose"
+        android:layout_weight="1"
+        android:background="@color/colorPrimaryDark"
+        android:text="Rock"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="410dp"
+        android:layout_toLeftOf="@+id/iv_YouChose" />
+
+    <Button
+        android:id="@+id/b_paper"
+        android:layout_width="108dp"
+        android:layout_height="48dp"
+        android:layout_alignTop="@+id/b_scissors"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="1"
+        android:background="@color/colorPrimaryDark"
+        android:text="Paper"
+        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteY="410dp" />
+
+    <Button
+        android:id="@+id/b_scissors"
+        android:layout_width="106dp"
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="120dp"
+        android:layout_toEndOf="@+id/iv_YouChose"
+        android:layout_toRightOf="@+id/iv_YouChose"
+        android:layout_weight="1"
+        android:background="@color/colorPrimaryDark"
+        android:text="Scissors"
+        tools:layout_editor_absoluteX="254dp"
+        tools:layout_editor_absoluteY="410dp" />
+
+
+</RelativeLayout>
