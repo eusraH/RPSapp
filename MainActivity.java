@@ -1,5 +1,4 @@
-
-package com.example.rps;
+package com.example.eusrahasan.rpsapp;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         mainActivity2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainActivity_2.class);
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                 startActivity(intent);
             }
         });
