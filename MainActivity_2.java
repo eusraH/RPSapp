@@ -1,5 +1,6 @@
-package com.example.rps;
+package com.example.eusrahasan.rpsapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,15 +11,17 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-public class MainActivity_2 extends AppCompatActivity {
+public class MainActivity2 extends AppCompatActivity {
+
+
 
     //created the variables
     Button Begin;
-    Button b_rock, b_paper, b_scissors, b_reset;
+    Button b_rock, b_paper, b_scissors;
+    Button b_reset;
     TextView tv_score;
     ImageView iv_YouChose, iv_ComputerChose;
 
-    TextView showValue;
     int counter =0;
 
     int HumanScore, ComputerScore = 0;
@@ -26,12 +29,14 @@ public class MainActivity_2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_2);
+        setContentView(R.layout.activity_main2);
 
         //assign the variables in the ids
         b_paper = (Button) findViewById(R.id.b_paper);
         b_rock = (Button) findViewById(R.id.b_rock);
         b_scissors = (Button) findViewById(R.id.b_scissors);
+
+        b_reset = (Button) findViewById(R.id.b_reset);
 
         iv_YouChose = (ImageView) findViewById(R.id.iv_YouChose);
         iv_ComputerChose = (ImageView) findViewById(R.id.iv_ComputerChose);
@@ -43,6 +48,14 @@ public class MainActivity_2 extends AppCompatActivity {
 
         //create some actions
 
+        Button mainActivity =  (Button) findViewById(R.id.b_reset); //this is going to take user back to the main page once reset button is clicked
+        mainActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         b_paper.setOnClickListener(new View.OnClickListener() {
@@ -52,10 +65,10 @@ public class MainActivity_2 extends AppCompatActivity {
                 //set the correct picture when a button is clicked
                 iv_YouChose.setImageResource(R.drawable.paper);
                 String message = play_turn("paper");
-                Toast.makeText(MainActivity_2.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity2.this, message, Toast.LENGTH_SHORT).show();
 
                 //show score
-                tv_score.setText("  Human:  " + Integer.toString(HumanScore) + " || Computer:" + Integer.toString(ComputerScore));
+                tv_score.setText("  Human:  " + Integer.toString(HumanScore) + " || Computer:" + Integer.toString(ComputerScore)); //to show the score
             }
         });
 
@@ -65,8 +78,8 @@ public class MainActivity_2 extends AppCompatActivity {
 
                 iv_YouChose.setImageResource(R.drawable.rock);
                 String message= play_turn("rock");
-                Toast.makeText(MainActivity_2.this, message, Toast.LENGTH_SHORT).show();
-                tv_score.setText(" Human:  " + Integer.toString(HumanScore) + " || Computer: " + Integer.toString(ComputerScore));
+                Toast.makeText(MainActivity2.this, message, Toast.LENGTH_SHORT).show();
+                tv_score.setText(" Human:  " + Integer.toString(HumanScore) + " || Computer: " + Integer.toString(ComputerScore)); //to show the score
 
 
             }
@@ -78,8 +91,8 @@ public class MainActivity_2 extends AppCompatActivity {
 
                 iv_YouChose.setImageResource(R.drawable.scissors);
                 String message= play_turn("scissors");
-                Toast.makeText(MainActivity_2.this, message, Toast.LENGTH_SHORT).show();
-                tv_score.setText(" Human: " + Integer.toString(HumanScore) + " || Computer: " + Integer.toString(ComputerScore));
+                Toast.makeText(MainActivity2.this, message, Toast.LENGTH_SHORT).show();
+                tv_score.setText(" Human: " + Integer.toString(HumanScore) + " || Computer: " + Integer.toString(ComputerScore)); //to show the score
 
 
             }
@@ -91,10 +104,10 @@ public class MainActivity_2 extends AppCompatActivity {
 
     public String play_turn( String player_choice){
 
-        String computer_choice = "";
-        Random r = new Random();
+        String computer_choice = ""; //for computer
+        Random r = new Random();  //producing random number
 
-        //choose between 1 2 0r 3
+        //choose between options 1 2 0r 3
         int computer_choice_number= r.nextInt(3) + 1;
 
         if(computer_choice_number==1){
@@ -109,7 +122,6 @@ public class MainActivity_2 extends AppCompatActivity {
 
 
         //Set computer image based on the choice
-
         if(computer_choice=="rock"){
             iv_ComputerChose.setImageResource(R.drawable.rock);
         }
@@ -122,15 +134,7 @@ public class MainActivity_2 extends AppCompatActivity {
 
 
         //Compare Computer choice and Human choice and declare winner
-        if ((HumanScore==2)||(ComputerScore==2)){
 
-            b_scissors.setVisibility(View.INVISIBLE);
-            b_paper.setVisibility(View.INVISIBLE);
-            b_rock.setVisibility(View.INVISIBLE);
-            Toast.makeText(MainActivity_2.this,"Please return to previous screen to reset the game",Toast.LENGTH_LONG).show();
-            master_resest();
-
-        }
         if (computer_choice == player_choice) {
             return "It's a draw, nobody won.";
         }
@@ -139,7 +143,6 @@ public class MainActivity_2 extends AppCompatActivity {
             if (player_choice == "rock" && computer_choice == "scissors") {
                 HumanScore++;
                 return "Rock beats scissors, you win!";
-
 
             }
             else if (player_choice == "rock" && computer_choice == "paper") {
@@ -163,30 +166,11 @@ public class MainActivity_2 extends AppCompatActivity {
                 return "Rock beats scissors, you win!";
             }
 
-            if ((HumanScore==2)||(ComputerScore==2)){
 
-                b_scissors.setVisibility(View.INVISIBLE);
-                b_paper.setVisibility(View.INVISIBLE);
-                b_rock.setVisibility(View.INVISIBLE);
-                Toast.makeText(MainActivity_2.this,"Please return to previous screen to reset the game",Toast.LENGTH_LONG).show();
-                master_resest();
-
-            }
 
         }
 
         return "I'm not sure yet.";
     }
 
-
-    public void reset(View view) {
-        master_resest();
-
-    }
-
-    public void master_resest(){
-        HumanScore = 0;
-        ComputerScore = 0;
-    }
 }
-
